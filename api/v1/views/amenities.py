@@ -8,7 +8,7 @@ from models.amenity import Amenity
 
 
 @app_views.route("/amenities", methods=["GET"], strict_slashes=False)
-def geting_amenity_all():
+def amenity_get_all():
     """ geting all Amenity objects
     :return: all states"""
     _list = []
@@ -20,7 +20,7 @@ def geting_amenity_all():
 
 
 @app_views.route("/amenities", methods=["POST"], strict_slashes=False)
-def amenity_make():
+def amenity_create():
     """ making and briging theamenity route
     :return: amenity obj"""
     amen_json = request.get_json(silent=True)
@@ -37,7 +37,7 @@ def amenity_make():
     return amen_res
 @app_views.route("/amenities/<amenity_id>",  methods=["GET"],
                  strict_slashes=False)
-def the_amenity(amenity_id):
+def amenity_by_id(amenity_id):
     """ takes specific Amenity object by an
     :return: obj with id or error"""
 
@@ -49,7 +49,7 @@ def the_amenity(amenity_id):
 
 @app_views.route("/amenities/<amenity_id>",  methods=["PUT"],
                  strict_slashes=False)
-def amenity_put_func(amenity_id):
+def amenity_put(amenity_id):
     """ changes a specific Amenity object id
     :return: the object amenetei with 200 success
     or 400 or 404 on failure"""
@@ -66,7 +66,7 @@ def amenity_put_func(amenity_id):
     return jsonify(fet_obj.to_json())
 @app_views.route("/amenities/<amenity_id>",  methods=["DELETE"],
                  strict_slashes=False)
-def amenity_delete_(amenity_id):
+def amenity_delete_by_id(amenity_id):
     """ this deletes Amenity by id
     :param amenity_id: An amenity obj id
     :return: an empty dicti with 200 or 404 if not found

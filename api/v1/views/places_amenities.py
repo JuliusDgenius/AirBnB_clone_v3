@@ -7,7 +7,7 @@ from api.v1.views import app_views, storage
 
 @app_views.route("/places/<place_id>/amenities",methods=["GET"],
                  strict_slashes=False)
-def the_amenity_place(place_id):
+def amenity_by_place(place_id):
     """takesamenities of a place
     :param: the amenity id
     :return: the amenities"""
@@ -24,7 +24,7 @@ def the_amenity_place(place_id):
 @app_views.route("/places/<place_id>/amenities/<amenity_id>",
                  methods=["DELETE"],
                  strict_slashes=False)
-def stop_amenity_place(place_id, amenity_id):
+def unlink_amenity_from_place(place_id, amenity_id):
     """ this stops and unlinks an amenity in a place
     :param: the place id
     :param: the amenity id
@@ -58,7 +58,7 @@ def stop_amenity_place(place_id, amenity_id):
 @app_views.route("/places/<place_id>/amenities/<amenity_id>",
                  methods=["POST"],
                  strict_slashes=False)
-def connect_amenity_place(place_id, amenity_id):
+def link_amenity_to_place(place_id, amenity_id):
     """ connecting the amenity with a place
     :param: the place id
     :param: the amenity id

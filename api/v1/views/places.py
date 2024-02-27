@@ -6,7 +6,7 @@ from models.place import Place
 
 @app_views.route("/cities/<city_id>/places", methods=["GET"],
                  strict_slashes=False)
-def the_places_city(city_id):
+def places_by_city(city_id):
     """ acquires all Place obj by city
     :return: json Places"""
     pl_list = []
@@ -17,7 +17,7 @@ def the_places_city(city_id):
     return jsonify(pl_list)
 @app_views.route("/cities/<city_id>/places", methods=["POST"],
                  strict_slashes=False)
-def make_the_place(city_id):
+def place_create(city_id):
     """ this will make the place route
     :return: the created Place obj"""
     pl_json = request.get_json(silent=True)
@@ -42,7 +42,7 @@ def make_the_place(city_id):
 
 @app_views.route("/places/<place_id>",  methods=["GET"],
                  strict_slashes=False)
-def the_place_id(place_id):
+def place_by_id(place_id):
     """ takes a specific Place obj of its id
     :param:the place object id
     :return: place obj or error"""
@@ -53,7 +53,7 @@ def the_place_id(place_id):
 
 @app_views.route("/places/<place_id>",  methods=["PUT"],
                  strict_slashes=False)
-def put_place_func(place_id):
+def place_put(place_id):
     """ changes a specific Place object id
     :param:the Place object ID
     :return: the Place object or 404 on failure
@@ -78,7 +78,7 @@ def put_place_func(place_id):
 
 @app_views.route("/places/<place_id>",  methods=["DELETE"],
                  strict_slashes=False)
-def the_place_delete(place_id):
+def place_delete_by_id(place_id):
     """ this deletes Place id
     :param place_id: Place object id
     :return: an empty dict or 404"""

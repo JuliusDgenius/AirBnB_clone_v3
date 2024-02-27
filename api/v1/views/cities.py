@@ -8,7 +8,7 @@ from models.city import City
 
 @app_views.route("/states/<state_id>/cities", methods=["GET"],
                  strict_slashes=False)
-def the_city_state(state_id):
+def city_by_state(state_id):
     """ this acquires City obj from a specific state
     :return: json cities in a state or 404 on error"""
     c_list = []
@@ -21,7 +21,7 @@ def the_city_state(state_id):
 
 @app_views.route("/states/<state_id>/cities", methods=["POST"],
                  strict_slashes=False)
-def make_the_city(state_id):
+def city_create(state_id):
     """ making the city route
     param: state_id - state id
     :return: the created city obj
@@ -45,7 +45,7 @@ def make_the_city(state_id):
 
 @app_views.route("/cities/<city_id>",  methods=["GET"],
                  strict_slashes=False)
-def the_city_id(city_id):
+def city_by_id(city_id):
     """ tkaes specific City object by ID
     :param city_id: the city object id
     :return: the city obj with an id or error"""
@@ -57,7 +57,7 @@ def the_city_id(city_id):
     return jsonify(fet_obj.to_json())
 
 @app_views.route("cities/<city_id>",  methods=["PUT"], strict_slashes=False)
-def put_city_func(city_id):
+def city_put(city_id):
     """ changes the specific City object by id
     :param city_id: the city object id
     :return: the city object """
@@ -75,7 +75,7 @@ def put_city_func(city_id):
 
 @app_views.route("/cities/<city_id>",  methods=["DELETE"],
                  strict_slashes=False)
-def the_city_delete(city_id):
+def city_delete_by_id(city_id):
     """ this deletes City by the id
     :param: the city object id
     :return: an empty dict with 200 or 404 if not found

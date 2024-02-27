@@ -6,7 +6,7 @@ from api.v1.views import app_views, storage
 from models.state import State
 
 @app_views.route("/states", methods=["GET"], strict_slashes=False)
-def get_the_state():
+def state_get_all():
     """ takes all the State objects
     :return: all states in json"""
     st_list = []
@@ -17,7 +17,7 @@ def get_the_state():
     return jsonify(st_list)
 
 @app_views.route("/states", methods=["POST"], strict_slashes=False)
-def make_the_state():
+def state_create():
     """ this makes the state route
     :return: the created state obj"""
     sta_json = request.get_json(silent=True)
@@ -33,7 +33,7 @@ def make_the_state():
 
 
 @app_views.route("/states/<state_id>",  methods=["GET"], strict_slashes=False)
-def the_state_id_func(state_id):
+def state_by_id(state_id):
     """ takes a specific State object by id
     :param: the state object id
     :return: a state obj or error"""
@@ -46,7 +46,7 @@ def the_state_id_func(state_id):
 
 
 @app_views.route("/states/<state_id>",  methods=["PUT"], strict_slashes=False)
-def put_state_func(state_id):
+def state_put(state_id):
     """ this takes specific State object in id
     :param: state object id
     :return: an state object or 404 on failure"""
@@ -65,7 +65,7 @@ def put_state_func(state_id):
 
 @app_views.route("/states/<state_id>", methods=["DELETE"],
                  strict_slashes=False)
-def the_state_delete_id(state_id):
+def state_delete_by_id(state_id):
     """ this deletes State id which is involved
     :param : the state object id
     :return: an empty dict or 404 if not found

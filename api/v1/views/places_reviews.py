@@ -8,7 +8,7 @@ from models.review import Review
 
 @app_views.route("/places/<place_id>/reviews", methods=["GET"],
                  strict_slashes=False)
-def the_place_review(place_id):
+def reviews_by_place(place_id):
     """ acquires all review objects by the place
     :return: jsons reviews"""
     rw_list = []
@@ -22,7 +22,7 @@ def the_place_review(place_id):
 
 @app_views.route("/places/<place_id>/reviews", methods=["POST"],
                  strict_slashes=False)
-def make_review(place_id):
+def review_create(place_id):
     """this makes the review route involved
     :return: the created Review obj"""
     rw_json = request.get_json(silent=True)
@@ -47,7 +47,7 @@ def make_review(place_id):
 
 @app_views.route("/reviews/<review_id>",  methods=["GET"],
                  strict_slashes=False)
-def the_review_id(review_id):
+def review_by_id(review_id):
     """ takes a specific Review object id 
     :param: the place object id
     :return: the review obj or an error"""
@@ -59,7 +59,7 @@ def the_review_id(review_id):
 
 @app_views.route("/reviews/<review_id>",  methods=["PUT"],
                  strict_slashes=False)
-def put_review_func(review_id):
+def review_put(review_id):
     """ changes some specific Review object id
     :param: the review object ID
     :return: the review object or 404 on failure"""
@@ -85,7 +85,7 @@ def put_review_func(review_id):
 
 @app_views.route("/reviews/<review_id>",  methods=["DELETE"],
                  strict_slashes=False)
-def the_review_delete(review_id):
+def review_delete_by_id(review_id):
     """ this deletes Review by id
     :param :thee review object id
     :return: an empty dictin..or 404 if not found"""

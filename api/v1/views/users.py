@@ -7,7 +7,7 @@ from models.user import User
 
 
 @app_views.route("/users", methods=["GET"], strict_slashes=False)
-def get_the_user():
+def user_get_all():
     """ takes all the User objects
     :return: users in json"""
     ur_list = []
@@ -18,7 +18,7 @@ def get_the_user():
 
 
 @app_views.route("/users", methods=["POST"], strict_slashes=False)
-def make_the_user():
+def user_create():
     """ this makes the user route
     :return: the created user obj"""
     ur_json = request.get_json(silent=True)
@@ -35,7 +35,7 @@ def make_the_user():
     return ur_res
 
 @app_views.route("/users/<user_id>",  methods=["GET"], strict_slashes=False)
-def the_user_id(user_id):
+def user_by_id(user_id):
     """ takes some specific User object id
     :param: the user object id
     :return: the user obj or error"""
